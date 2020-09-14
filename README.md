@@ -13,9 +13,9 @@ Change the Atlas URI within the .env file.
 
 In the project directory, you can run:
 
-### `sudo install -g nodemon`
+### `npm install -g nodemon`
 
-The page will reload if you make edits.<br />
+When you make edits, this will reload the script & consequently the pages.<br />
 You will also see any lint errors in the console.
 
 ### `nodemon server`
