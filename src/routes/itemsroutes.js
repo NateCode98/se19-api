@@ -27,8 +27,9 @@ router.route('/add').post((req, res) => {
 });
 
 router.route('/:id').delete((req, res) => {
-    console.log('delete')
-    Items.findByIdAndDelete(req.params.id)
+    console.log('delete');
+    const id = Number(req.body.id);
+    Items.findByIdAndDelete(id)
         .then(() => res.json('Item deleted.'))
         .catch(err => res.status(400).json('Error: ' + err));
 });
