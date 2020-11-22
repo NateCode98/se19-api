@@ -11,7 +11,7 @@ router.route('/').get((req, res) => {
 router.route('/add').post((req, res) => {
     console.log('hlell')
     console.log(req.body)
-    const id = Number(req.body.id);
+    const id = req.body.id;
     const date = req.body.date;
     const text = req.body.text;
 
@@ -28,16 +28,15 @@ router.route('/add').post((req, res) => {
 
 router.route('/:id').delete((req, res) => {
     console.log('delete');
-    const id = Number(req.body.id);
-    Items.findByIdAndDelete(id)
+    Items.findByIdAndDelete(req.body.id)
         .then(() => res.json('Item deleted.'))
         .catch(err => res.status(400).json('Error: ' + err));
 });
 
-router.route('/update/:id').post((req, res) => {
+router.route('/:id').put((req, res) => {
     Items.findById(req.params.id)
         .then(item => {
-            item.id = Number(req.body.id);
+            item.id = req.body.id;
             item.date = req.body.date;
             item.text = req.body.text;
 
