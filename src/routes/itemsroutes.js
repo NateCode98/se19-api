@@ -28,13 +28,13 @@ router.route('/add').post((req, res) => {
 
 router.route('/:id').delete((req, res) => {
     console.log('delete');
-    Items.findByIdAndDelete(req.body.id)
+    Items.findOneAndRemove({ id: req.params.id })
         .then(() => res.json('Item deleted.'))
         .catch(err => res.status(400).json('Error: ' + err));
 });
 
 router.route('/:id').put((req, res) => {
-    Items.findById(req.params.id)
+    Items.findOne({ id: req.params.id })
         .then(item => {
             item.id = req.body.id;
             item.date = req.body.date;
